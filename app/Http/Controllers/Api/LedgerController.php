@@ -18,6 +18,8 @@ class LedgerController extends Controller
     public function ledger(Request $request, $id)
     {
         $ledgerEntries = $this->ledgerService->find($id);
+
+        return $ledgerEntries;
     }
 
     public function calculateStock($id)

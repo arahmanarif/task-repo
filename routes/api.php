@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\LedgerController;
+use App\Http\Controllers\Api\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('products', [ProductController::class, 'index'])->name('products.index');
+Route::get('ledger/{id}', [LedgerController::class, 'ledger'])->name('products.ledger');
+Route::get('calculate/stock/{id}', [LedgerController::class, 'calculateStock'])->name('ledger.calculate.stock');
