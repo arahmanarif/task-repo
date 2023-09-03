@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\LedgerResource;
 use App\Interfaces\ProductLedgerInterface;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class LedgerController extends Controller
     {
         $ledgerEntries = $this->ledgerService->find($id);
 
-        return $ledgerEntries;
+        return LedgerResource::collection($ledgerEntries);
     }
 
     public function calculateStock($id)
